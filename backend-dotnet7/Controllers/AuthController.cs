@@ -107,8 +107,8 @@ namespace backend_dotnet7.Controllers
 
         //Route -> Get User by Username
         [HttpGet]
-        [Route("users/userName")]
-        public async Task<ActionResult<UserInfoResult>> GetUserDetailByUserName([FromBody] string userName)
+        [Route("users/{userName}")]
+        public async Task<ActionResult<UserInfoResult>> GetUserDetailByUserName([FromRoute] string userName)
         {
             var user = await _authService.GetUserDetailsByUserNameAsyncs(userName);
             if(user is not null)
